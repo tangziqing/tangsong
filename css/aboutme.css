@@ -7,7 +7,8 @@ body{
             margin: 0px auto;
          }
 .weather{
-	float: right;
+	position: absolute;
+	right: 2%;
 }
 .clear{
 	clear: both;
@@ -41,20 +42,14 @@ body{
   width: 80%;
   height: 720px;
   margin: 30px auto;
-  font-size: x-large;
+  
 }
-.introduce h3,p{
+.introduce h3,.introduce p{
 	font-family:'微软雅黑', Helvetica, Arial, sans-serif;
 	color:#fff;
+	font-size: 26px;
+    font-weight: normal;
 }
-
-}
-table{
-  margin:0 auto;
-  width:100%;
-  border-collapse:collapse;
-  background-color:#ffcc66;
- }
 
 .education td, .education th{
   font-size:1em;
@@ -92,5 +87,26 @@ table{
 	padding-top:2em;
 }
 .intro{
-	
+	text-align: center;
+	display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.slide h1{	
+	font-size: 5em;
+	font-family: arial,helvetica;
+	color: #fff;
+	margin:0;
+}
+.intro h1{
+	display: table-cell;
+    vertical-align: middle;
+	font-size: 5em;
+	font-family: arial,helvetica;
+	color: #fff;
+	margin:0;
+}
+.intro p{
+	color: #fff;
 }
