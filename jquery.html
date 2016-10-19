@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport " content="user-scalable=no, width=device-width, initial-scale=1.0 " />
+		<meta http-equiv="X-UA-Compatible " content="IE=edge ">	
+		<title>Jquery介绍</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		 <link href="css/bootstrap.min.css " rel="stylesheet ">
+		 <link href="css/technology.css" rel="stylesheet ">
+	</head>
+	<body>
+		<!--Jquery start-->
+		<article class="container ">
+     	<div class="row ">
+	    <div class="col-xs-12">
+	   <p class="text-justify ">jQuery是一个兼容多浏览器的javascript库，核心理念是write less,do more(写得更少,做得更多)。jQuery在2006年1月由美国人John Resig在纽约的barcamp发布，吸引了来自世界各地的众多JavaScript高手加入。jQuery还有一个比较大的优势是，它的文档说明很全，而且各种应用也说得很详细，同时还有许多成熟的插件可供选择。</p>
+	   <p class="text-justify ">jQuery是免费、开源的，使用MIT许可协议。jQuery的语法设计可以使开发更加便捷，例如操作文档对象、选择DOM元素、制作动画效果、事件处理、使用Ajax以及其他功能。除此以外，jQuery提供API让开发者编写插件。其模块化的使用方式使开发者可以很轻松的开发出功能强大的静态或动态网页。 </p>
+	   <h3>使用国内免费 CDN 加速服务</h3>
+	   <p class="text-justify ">如果你不希望下载并存放 jQuery，那么也可以通过 CDN（内容分发网络） 引用它。百度、又拍云、新浪、谷歌和微软的服务器都存有 jQuery 。如果你的站点用户是国内的，建议使用百度、又拍云、新浪等国内CDN地址，如果你站点用户是国外的可以使用谷歌和微软。</p>
+	    <div class="highlight "><pre><code class="language-html " data-lang="html "><span class="c ">&lt;!-- 百度CDN文件引用 --&gt;</span>
+<span class="nt ">&lt;script </span><span class="na ">src=</span><span class="s ">"http://libs.baidu.com/jquery/1.10.2/jquery.min.js "</span><span class="nt ">&gt;&lt;/script&gt;</span>
+
+<span class="c ">&lt;!-- 又拍云CDN文件引用  --&gt;</span>
+<span class="nt ">&lt;script </span><span class="na ">src=</span><span class="s ">"http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js "</span><span class="nt ">&gt;&lt;/script&gt;</span>
+
+<span class="c ">&lt;!-- 新浪CDN文件引用  --&gt;</span>
+<span class="nt ">&lt;script </span><span class="na ">src=</span><span class="s ">"http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js "</span><span class="nt ">&gt;&lt;/script&gt;</span>
+
+<span class="c ">&lt;!-- 谷歌CDN文件引用  --&gt;</span>
+<span class="nt ">&lt;script </span><span class="na ">src=</span><span class="s ">"http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js "</span><span class="nt ">&gt;&lt;/script&gt;</span></code></pre></div>
+	    
+	    <h3>常见的DOM事件</h3>
+	    <div class="table-responsive ">
+    <table class="table table-bordered table-striped ">
+      <thead>
+        <tr>
+          <th>鼠标事件</th>
+          <th>键盘事件</th>
+          <th>表单事件</th>
+          <th>文档/窗口事件</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td >click</th>
+          <td >keypress</td>
+          <td >submit</td>
+          <td >load</td>
+        </tr>
+        <tr>
+          <td >dblcilck</th>
+          <td >keydown</td>
+          <td >change</td>
+          <td >resize</td>
+        </tr>
+        <tr>
+          <td >mouseenter</th>
+          <td >keyup</td>
+          <td >focus</td>
+          <td >scroll</td>
+        </tr>
+        <tr>
+          <td >mouseleave</th>
+          <td ></td>
+          <td >blur</td>
+          <td >unload</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+	   <h3>常见的Jquery事件方法</h3> 
+	   <h4>1.$(document).ready( )</h4>
+	    <p class="text-justify ">$(document).ready() 方法允许我们在文档完全加载完后执行函数。这是为了防止文档在完全加载（就绪）之前运行 jQuery 代码。如果在文档没有完全加载之前就运行函数，操作可能失败。</p>	    
+	    <h4>2.click( )</h4>
+	    <p class="text-justify ">click() 方法是当按钮点击事件被触发时会调用一个函数。该函数在用户点击 HTMl 元素时执行。</p>	    
+	    <h4>3.dblclick( )</h4>
+	     <p class="text-justify ">当双击元素时，会发生 dblclick 事件。dblclick() 方法触发 dblclick 事件，或规定当发生 dblclick 事件时运行的函数。</p>
+	     <h4>4.mouseleave( )</h4>
+	     <p class="text-justify ">当鼠标指针离开元素时，会发生 mouseleave 事件。mouseleave() 方法触发 mouseleave 事件，或规定当发生 mouseleave 事件时运行的函数。</p>
+	     <h4>5.mousedown( )</h4>
+	     <p class="text-justify ">当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件。mousedown() 方法触发 mousedown 事件，或规定当发生 mousedown 事件时运行的函数。</p>
+	     <h4>6.hover( )</h4>
+	     <p class="text-justify ">hover()方法用于模拟光标悬停事件。当鼠标移动到元素上时，会触发指定的第一个函数(mouseenter);当鼠标移出这个元素时，会触发指定的第二个函数(mouseleave)。</p>
+	     <h4>7.focus( )</h4>
+	     <p class="text-justify ">当元素获得焦点时，发生 focus 事件。当通过鼠标点击选中元素或通过 tab 键定位到元素时，该元素就会获得焦点。focus() 方法触发 focus 事件，或规定当发生 focus 事件时运行的函数。</p>
+	     <h4>8.blur( )</h4>
+	     <p class="text-justify ">当元素失去焦点时，发生 blur 事件。blur() 方法触发 blur 事件，或规定当发生 blur 事件时运行的函数。</p>
+	     <br />
+	    <h3>下载Jquery</h3>
+		<p class="text-left ">编译并压缩后的 CSS、JavaScript 和字体文件。不包含文档和源码文件。</p>
+        <a href="http://code.jquery.com/jquery-1.11.3.min.js "download class="btn btn-lg btn-outline ">下载Jquery</a>
+	    
+
+	    </div>
+	    </div>   
+     </article>
+		<!--Jquery end-->
+		
+		 <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+
+        <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+	</body>
+</html>

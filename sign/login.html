@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=utf-8 " />
+		<meta name="viewport " content="user-scalable=no, width=device-width, initial-scale=1.0 " />
+		<meta http-equiv="X-UA-Compatible " content="IE=edge ">
+		<title>登录</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<div id="login">
+			<p class="ti">登录</p>
+			<div class="logincon">
+				<form action="login_check.jsp" method="post" name="contact_form" onsubmit="changeStyle()">
+					<p><input type="text" class="txt user" name="user" placeholder="请输入账号" autocomplete='off' required/></p>
+					<p><input type="password" class="txt pwd" name="Password" placeholder="请输入密码" autocomplete='off' required/></p>
+					<p><a href="register.html">注册</a></p>
+		            <p><a href="findword.html">忘记密码？</a></p>
+					<input type="submit" class="button" value="登 录" name="btn">
+				</form>
+			</div>
+		</div>
+		<script>
+		  function changeStyle(){
+		  	document.contact_form.btn.value = "提交中";
+		  }
+		</script>
+	</body>
+
+</html>

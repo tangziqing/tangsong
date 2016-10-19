@@ -1,16 +1,63 @@
-﻿<!DOCTYPE html>
-<html>
-	<head>
-	<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="renderer" content="webkit|ie-comp|ie-stand">
-		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-		<title>编辑背景资料</title>
-        <link href="css/teacher.css" rel="stylesheet">
-        
-    </head>
-	<body>
-	<h1>这是主页文件HelloWorld</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset=utf-8 " />
+	<meta name="viewport " content="user-scalable=no, width=device-width, initial-scale=1.0 " />
+	<meta http-equiv="X-UA-Compatible " content="IE=edge ">
+	<meta name="tangsong" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="a personal website" />
+	<meta name="keywords"  content="bootstrap,fullpage,jquery,css3" />
+	<meta name="Resource-type" content="Document" />
+	<title>游历网</title>
+	<!-- ico -->
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="./sign.css/index.css" />
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<center>
+	
+	<div id="login">
+			<p class="ti">登录</p>
+			<div class="logincon">
+				<form name="form1">
+					<p><input type="text" class="txt user" name="user" placeholder="请输入账号" autocomplete='off' required/></p>
+					<p><input type="password" class="txt pwd" name="Password" placeholder="请输入密码" autocomplete='off' required/></p>
+					<p><a href="register.html">注册</a></p>
+		            <p><a href="findword.html">忘记密码？</a></p>
+					<input type="submit" class="button" name="mybutton" value="登 录" onclick="setlog()">
+				</form>
+			</div>
+	</div>
+	</center>
+		
+    <p>这是个人测试专用页面，如需查看主页信息，请点击<a href="youli.html">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" >进入主页</button>
+        </a>
+    </p>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <script>
+		  function setlog(){
+		  	document.form1.mybutton.value = "提交中";
+		  	this.style.disabled = "disabled"
+		  }
+	</script>
+    
+</body>
 </html>

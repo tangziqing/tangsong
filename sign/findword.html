@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<link rel="stylesheet" type="text/css" href="css/findword.css" />
+		<title>找回密码</title>
+		<style>
+		.code{
+            font-style:italic;
+             color:blue;
+             font-size:30px;
+             border:0;           
+             font-weight:bolder;                                     
+             cursor:pointer;
+             width:100px;
+             height:43px;
+             line-height:43px;
+             text-align:center;
+             vertical-align:middle;}
+			 .yzmpic{
+			 width:110px; 
+			 height: 45px;
+			 border: 1px solid #ccc;
+			 float:right;
+			 }
+
+		</style>
+	</head>
+
+	<body onload="createCode()">
+		<div id="login">
+			<p class="ti">找回密码</p>
+			<div class="logincon">
+			<form action="showword.jsp" method="post">
+				<p>
+					<input type="text" class="txt phone"id="num" name="number" placeholder="请输入电话号码" required/>
+				</p>
+				<p>
+					<input type="text" id="inputCode" class="txt yzm" placeholder="请输入验证码"/>
+					<div class="yzmpic">
+					<div class="code" id="checkCode" onclick="createCode()" ></div>
+					</div>								
+				</p>				
+				<p><a href="login.html">登录</a></p>
+				<p><a href="register.html">注册</a></p>
+				<div class="clear"></div>
+				<input type="submit"  class="button" value="确 定" onclick="return validateCode();"/>
+				</form>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+    <script language="javascript" type="text/javascript">
+        var code;
+        function createCode() {
+            code = "";
+            var codeLength = 4; //验证码长度
+            var checkCode = document.getElementById("checkCode");
+            var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //���к�ѡ�����֤����ַ�ȻҲ���������ĵ�
+            for (var i = 0; i < codeLength; i++) 
+            {
+                var charNum = Math.floor(Math.random() * 26);
+                code += codeChars[charNum];
+            }
+            if (checkCode) 
+            {
+                checkCode.className = "code";
+                checkCode.innerHTML = code;
+            }
+        }
+        function validateCode() 
+        {
+            var inputCode = document.getElementById("inputCode").value;
+            if (inputCode.length <= 0) 
+            {
+                alert("请输入验证码");
+				return false;
+            }
+            else if (inputCode.toUpperCase() != code.toUpperCase()) 
+            {
+                alert("验证码输入错误");
+                createCode();
+				return false;
+            }
+            else 
+            {
+               return true;
+            }        
+        }    
+     </script>

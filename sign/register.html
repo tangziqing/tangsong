@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>注册表单验证</title>
+
+		<link rel="stylesheet" href="css/register.css">
+
+		<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="js/easyform.js"></script>
+	</head>
+
+	<body>
+		<br>
+		<br>
+		<br>
+		<div class="form-div">
+			<p class="ti">用户注册</p>
+			<form id="reg-form" action="fuction.jsp" method="post" accept-charset="utf-8" >
+
+				<table>
+					<tr>
+						<td><span class="red">*</span>用户名</td>
+						<td>
+							<input name="name" type="text" id="uid" placeholder="2-16位中英文" easyform="length:2-16;char-chinese;ajax:fun();" message="用户名必须为2—16位" easytip="disappear:lost-focus;theme:blue;" ajax-message="用户名已存在!">
+						</td>
+					</tr>
+					<tr>
+						<td><span class="red">*</span>密&nbsp码</td>
+						<td>
+							<input name="password" type="password" id="psw1" placeholder="6-16位" easyform="length:6-16;pwdyz;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;">
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<div class="pwd_strong">
+								<div class="ywz_zhuce_huixian" id='pwdLevel_1'> </div>
+								<div class="ywz_zhuce_huixian" id='pwdLevel_2'> </div>
+								<div class="ywz_zhuce_huixian" id='pwdLevel_3'> </div>
+								<div class="ywz_zhuce_hongxianwenzi"> 弱</div>
+								<div class="ywz_zhuce_hongxianwenzi"> 中</div>
+								<div class="ywz_zhuce_hongxianwenzi"> 强</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="red">*</span>确认密码</td>
+						<td>
+							<input name="psw2" type="password" id="psw2" easyform="length:6-16;equal:#psw1;real-time;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;">
+						</td>
+					</tr>
+					<tr>
+						<td><span class="red">*</span>邮&nbsp箱</td>
+						<td>
+							<input name="email" type="text" id="email" placeholder="请输入邮箱" easyform="email;" message="Email格式要正确" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过，请换一个吧!">
+						</td>
+					</tr>
+					<tr>
+						<td><span class="red">*</span>手机号码</td>
+						<td>
+							<input name="number" type="text" id="nickname" placeholder="11位手机号码" easyform="length:11;num;" message="请输入11位手机号码" easytip="disappear:lost-focus;theme:blue;">
+						</td>
+					</tr>
+				</table>
+
+				<div class="buttons">
+					<input value="注 册" type="submit" id="register" style="margin-right:20px; margin-top:20px;">
+					<a href="login.html">
+					<input value="返回登录" type="button" style="margin-right:169px; margin-top:20px;">
+					</a>
+				</div>
+
+				<br class="clear">
+			</form>
+		</div>
+		<div class="footer">
+			<p>Designed by 唐子清</p>
+		</div>
+		<script>
+			$(document).ready(function() {
+				$('#reg-form').easyform();
+			});
+		</script>
+		<script>
+			$('#psw1').focus(function() {
+				$('#pwdLevel_1').attr('class', 'ywz_zhuce_hongxian');
+				$('#psw1').keyup();
+			});
+			$('#psw1').keyup(function() {
+				var __th = $(this);
+				if (!__th.val()) {
+					$('#pwd_tip').hide();
+					$('#pwd_err').show();
+					Primary();
+					return;
+				}
+				if (__th.val().length < 6) {
+					$('#pwd_tip').hide();
+					$('#pwd_err').show();
+					Weak();
+					return;
+				}
+				var _r = checkPassword(__th);
+				if (_r < 1) {
+					$('#pwd_tip').hide();
+					$('#pwd_err').show();
+					Primary();
+					return;
+				}
+				if (_r > 0 && _r < 2) {
+					Weak();
+				} else if (_r >= 2 && _r < 4) {
+					Medium();
+				} else if (_r >= 4) {
+					Tough();
+				}
+				$('#pwd_tip').hide();
+				$('#pwd_err').hide();
+			});
+
+			function Primary() {
+				$('#pwdLevel_1').attr('class', 'ywz_zhuce_huixian');
+				$('#pwdLevel_2').attr('class', 'ywz_zhuce_huixian');
+				$('#pwdLevel_3').attr('class', 'ywz_zhuce_huixian');
+			}
+
+			function Weak() {
+				$('#pwdLevel_1').attr('class', 'ywz_zhuce_hongxian');
+				$('#pwdLevel_2').attr('class', 'ywz_zhuce_huixian');
+				$('#pwdLevel_3').attr('class', 'ywz_zhuce_huixian');
+			}
+
+			function Medium() {
+				$('#pwdLevel_1').attr('class', 'ywz_zhuce_hongxian');
+				$('#pwdLevel_2').attr('class', 'ywz_zhuce_hongxian2');
+				$('#pwdLevel_3').attr('class', 'ywz_zhuce_huixian');
+			}
+
+			function Tough() {
+				$('#pwdLevel_1').attr('class', 'ywz_zhuce_hongxian');
+				$('#pwdLevel_2').attr('class', 'ywz_zhuce_hongxian2');
+				$('#pwdLevel_3').attr('class', 'ywz_zhuce_hongxian3');
+			}
+
+			function checkPassword(pwdinput) {
+				var maths, smalls, bigs, corps, cat, num;
+				var str = $(pwdinput).val()
+				var len = str.length;
+				var cat = /.{16}/g
+				if (len == 0) return 1;
+				if (len > 16) {
+					$(pwdinput).val(str.match(cat)[0]);
+				}
+				cat = /.*[\u4e00-\u9fa5]+.*$/
+				if (cat.test(str)) {
+					return -1;
+				}
+				cat = /\d/;
+				var maths = cat.test(str);
+				cat = /[a-z]/;
+				var smalls = cat.test(str);
+				cat = /[A-Z]/;
+				var bigs = cat.test(str);
+				var corps = corpses(pwdinput);
+				var num = maths + smalls + bigs + corps;
+				if (len < 6) {
+					return 1;
+				}
+				if (len >= 6 && len <= 8) {
+					if (num == 1) return 1;
+					if (num == 2 || num == 3) return 2;
+					if (num == 4) return 3;
+				}
+				if (len > 8 && len <= 11) {
+					if (num == 1) return 2;
+					if (num == 2) return 3;
+					if (num == 3) return 4;
+					if (num == 4) return 5;
+				}
+				if (len > 11) {
+					if (num == 1) return 3;
+					if (num == 2) return 4;
+					if (num > 2) return 5;
+				}
+			}
+
+			function corpses(pwdinput) {
+				var cat = /./g
+				var str = $(pwdinput).val();
+				var sz = str.match(cat)
+				for (var i = 0; i < sz.length; i++) {
+					cat = /\d/;
+					maths_01 = cat.test(sz[i]);
+					cat = /[a-z]/;
+					smalls_01 = cat.test(sz[i]);
+					cat = /[A-Z]/;
+					bigs_01 = cat.test(sz[i]);
+					if (!maths_01 && !smalls_01 && !bigs_01) {
+						return true;
+					}
+				}
+				return false;
+			}
+			
+		</script>
+	</body>
+
+</html>
