@@ -30,7 +30,7 @@
 	<center>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<h2>你好，这是唐松发布的第一个网页项目，性能优化不足，响应速度很慢。</h2>
-	<h2>5秒后为你自动跳转，如果没有自动跳转，请点击<a href="youli.html">
+	<h2><span id="time">5</span>秒后为你自动跳转，如果没有自动跳转，请点击<a href="youli.html">
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" >进入主页</button>
         </a>
     </h2>
@@ -49,6 +49,20 @@
 		  	this.style.disabled = "disabled"
 		  }
 	</script>
+    <script type="text/javascript">
+        var setTime;
+        $(document).ready(function(){
+            var time=parseInt($("#time").text());
+            setTime=setInterval(function(){
+                if(time<=0){
+                    clearInterval(setTime);
+                    return;
+                }
+                time--;
+                $("#time").text(time);
+            },1000);
+        });
+    </script>
     
 </body>
 </html>
