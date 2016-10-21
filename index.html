@@ -51,7 +51,7 @@
 	</script>
     <script type="text/javascript">
         var setTime;
-        $(document).ready(function(){
+        window.onload=function(){
             var time=parseInt($("#time").text());
             setTime=setInterval(function(){
                 if(time<=0){
